@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">QotD</string>
+    <string name="action_settings">Settings</string>
+    <string name="fetch_qotd">Fetch Quote of the Day</string>
+    <string name="empty_qotd_view">Click the button to display a random quote</string>
+
+</resources>
