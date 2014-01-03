@@ -106,19 +106,17 @@ public class MainActivity extends Activity {
 		int currLine = 0;
 
 		//4. Loop through using the new InputStreamReader until a match is found
-		while ((line = buf.readLine()) != null) {
-			// Get a random line number
-			if (currLine == lineToFetch) {
-				quote = line;
-				Log.v("LINE", line);
-				randomQuote.close();
-				buf.close();
-				return quote;
-			} else
-				currLine++;
+		while ((line = buf.readLine()) != null && currLine < lineToFetch) {
+			currLine++;
 		}
+		
+		//Got the quote
+		quote = line;
+
+		//Clean up
 		randomQuote.close();
 		buf.close();
+
 		return quote;
 	}
 

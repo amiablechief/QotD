@@ -181,8 +181,7 @@ I've begun to wonder if we wouldn't also regard spelunkers as desperate criminal
 I'm a member of that half of the human race which is inclined to divide the human race into two kinds of people.  My dividing line runs between the people who crave certainty and the people who trust chance. -- John Perry Barlow
 "Testing can prove the presence of bugs, but not their absence." -- Dykstra
 There are two ways of constructing a software design; One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiences. -- C. A. R. Hoare
-Is is always time to do the right thing.
-	-- Martin Luther King
+Is is always time to do the right thing. -- Martin Luther King
 Solve 90% of the problem as simply as you can, and then remove the other 10% from the problem requirements. -- Marshall Rose
 The universe doesn't always give you what you want. It gives you what you need.
 "If you think technology can solve your security problems, then you don't understand the problems and you don't understand the technology." -- Bruce Schneier, Secrets and Lies
