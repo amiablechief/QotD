@@ -21,7 +21,7 @@ The future has arrived; it's just not evenly distributed. -- William Gibson
 Shallit's Razor: Never attribute to conspiracy what may be adequately explained by stupidity or incompetence.
 "Love is only a dirty trick played on us to achieve the continuation of the species" -- W. Somerset Maugham
 "Do, or do not. There is no try." -- Yoda
--- Backwards compatible -- If it's not backwards it's not compatible.
+Backwards compatible -- If it's not backwards it's not compatible.
 Pride goeth before a fall. -- Babylon 5
 Trouble will come in its own time, it always does. But that's tomorrow. Give me today and I will be happy. -- Sheridan, Babylon 5 (After the shadow war was over)
 We can't really predict the future at all. All we can do is invent it.
@@ -301,9 +301,7 @@ We're sysadmins. To us, data is a protocol-overhead.
 Don't put off for tomorrow what you can do today, because if you enjoy it today you can do it again tomorrow.
 "you can have peace.  or you can have freedom. don't ever count on having both at once." -- LL (RAH)
 "Some humans would do anything to see if it was possible to do it. If you put a large switch in some cave somewhere, with a sign on it saying "End-of-the-World Switch. PLEASE DO NOT TOUCH," the paint wouldn't even have time to dry." -- Terry Pratchett (Thief of Time)
-I am concerned about any program, any piece of hardware, any treaty,
-any law that treats me as a consumer, not a citizen
-	-- dowobeha on Slashdot
+I am concerned about any program, any piece of hardware, any treaty, any law that treats me as a consumer, not a citizen	-- dowobeha on Slashdot
 Those who do not understand end-to-end are doomed to reimplement it, poorly. -- Greg Maxwell on NANOG
 "Laws are like cobwebs; strong enough to detain only the weak, and too weak to hold the strong" -- Anacharsis
 "The internet is a reflection of our society and that mirror is going to be reflecting what we see," he said. "If we do not like what we see in that mirror the problem is not to fix the mirror, we have to fix society." -- Vint Cerf
