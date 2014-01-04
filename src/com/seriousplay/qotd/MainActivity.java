@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Random;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.res.AssetManager;
@@ -13,19 +12,35 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+	private TextView mTextView;
+	private static String TEXT_VALUE = ""; 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		mTextView = (TextView) findViewById(R.id.qotdview);
+		if(savedInstanceState != null) {
+			String savedText = savedInstanceState.getString(TEXT_VALUE);
+			mTextView.setText(savedText);
+		}
 
-		EditText textToScroll = (EditText) findViewById(R.id.qotdview);
-		textToScroll.setMovementMethod(ScrollingMovementMethod.getInstance());
+		//Adds scrolling to the TextView
+		mTextView.setMovementMethod(ScrollingMovementMethod.getInstance());
 	}
 
+	//Code to save state on orientation change
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putString(TEXT_VALUE, mTextView.getText().toString());
+	}
+	
 	private AssetManager getApplicationAssets() {
 		// open random quotes file
 		AssetManager assetmanager = getAssets();
@@ -122,8 +137,9 @@ public class MainActivity extends Activity {
 
 	// Set the EditText widget to display the new random quote
 	private void displayQuote(String quote) {
-		EditText quoteDisplay = (EditText) findViewById(R.id.qotdview);
-		quoteDisplay.setText(quote);
+		TextView quoteDisplay = (TextView) findViewById(R.id.qotdview);
+		TEXT_VALUE = quote;
+		quoteDisplay.setText(TEXT_VALUE);
 	}
 
 	// onClick handler for the button click
