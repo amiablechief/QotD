@@ -5,14 +5,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Random;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.res.AssetManager;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -155,8 +158,6 @@ public class MainActivity extends Activity {
 		// We want to get the quote at the following line number
 		lineToFetch = getRandomLineNumber(totalLines);
 		
-		//Fine until this point in the program//
-		
 		quote = getRandomQuote(lineToFetch);
 
 		displayQuote(quote);
@@ -167,5 +168,21 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		//Handle item selection
+		switch(item.getItemId()) {
+			//TODO: Replace toasts with actual calls to fragments/activities
+			case R.id.action_settings:
+				Toast.makeText(getApplicationContext(), "Settings not yet implemented", Toast.LENGTH_LONG).show();
+				return true;
+			case R.id.action_about:
+				Toast.makeText(getApplicationContext(), "Please visit github.com/kulinp/QotD", Toast.LENGTH_LONG).show();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 }
