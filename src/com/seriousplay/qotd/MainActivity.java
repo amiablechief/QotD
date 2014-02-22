@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Random;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.res.AssetManager;
@@ -16,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.analytics.tracking.android.EasyTracker;
 
 public class MainActivity extends Activity {
 
@@ -37,6 +37,18 @@ public class MainActivity extends Activity {
 		mTextView.setMovementMethod(ScrollingMovementMethod.getInstance());
 	}
 
+	@Override
+	protected void onStart() {
+		super.onStart();
+		EasyTracker.getInstance().activityStart(this);
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+		EasyTracker.getInstance().activityStop(this);
+	}
+	
 	//Code to save state on orientation change
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
