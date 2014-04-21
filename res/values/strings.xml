@@ -6,5 +6,6 @@
     <string name="fetch_qotd">Fetch Random Quote</string>
     <string name="empty_qotd_view">Click the button to display a quotable quote</string>
     <string name="action_about">About QotD</string>
-
+    <string name="menu_item_share_text">Share</string>
+    <string name="send_to">Send to ></string>
 </resources>

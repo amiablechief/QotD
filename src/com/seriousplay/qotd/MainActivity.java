@@ -7,12 +7,14 @@ import java.io.InputStreamReader;
 import java.util.Random;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.analytics.tracking.android.EasyTracker;
@@ -173,15 +175,30 @@ public class MainActivity extends Activity {
 		quote = getRandomQuote(lineToFetch);
 
 		displayQuote(quote);
+	
+		//startActivity(createShareIntent(quote));
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		MenuItem shareItem = menu.findItem(R.id.menu_item_share);
+		ShareActionProvider actionProvider = (ShareActionProvider) shareItem.getActionProvider();
+		actionProvider.setShareIntent(createShareIntent(TEXT_VALUE));
+		
 		return true;
 	}
 	
+	private Intent createShareIntent(String quote) {
+		Intent shareIntent = new Intent();
+		shareIntent.setAction(Intent.ACTION_SEND);
+		shareIntent.putExtra(Intent.EXTRA_TEXT, quote);
+		shareIntent.setType("text/plain");
+		//return Intent.createChooser(shareIntent, getResources().getText(R.string.send_to));
+		return shareIntent;
+	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		//Handle item selection
