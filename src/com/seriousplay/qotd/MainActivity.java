@@ -192,15 +192,6 @@ public class MainActivity extends Activity {
 				
 		return super.onCreateOptionsMenu(menu);
 	}
-	
-//	private Intent createShareIntent(String quote) {
-//		Intent shareIntent = new Intent();
-//		shareIntent.setAction(Intent.ACTION_SEND);
-//		shareIntent.putExtra(Intent.EXTRA_TEXT, quote);
-//		shareIntent.setType("text/plain");
-//		//return Intent.createChooser(shareIntent, getResources().getText(R.string.send_to));
-//		return shareIntent;
-//	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -208,12 +199,16 @@ public class MainActivity extends Activity {
 		int id = item.getItemId();
 		
 		if(id == R.id.menu_item_share) {
-			Toast.makeText(this, "Clicked Share!", Toast.LENGTH_SHORT).show();
-			Intent shareIntent = new Intent(Intent.ACTION_SEND);
-			shareIntent.setType("text/plain");
-			shareIntent.putExtra(Intent.EXTRA_TEXT, TEXT_VALUE);
-			shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Thought you might like this interesting Quote");
-			startActivity(shareIntent);			
+			if(TEXT_VALUE == "") {
+				Toast.makeText(this, "Nothing to share! First generate a quote by clicking the button", Toast.LENGTH_SHORT).show();
+			} else {
+				//Toast.makeText(this, "Opening share options", Toast.LENGTH_SHORT).show();
+				Intent shareIntent = new Intent(Intent.ACTION_SEND);
+				shareIntent.setType("text/plain");
+				shareIntent.putExtra(Intent.EXTRA_TEXT, TEXT_VALUE);
+				shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Thought you might like this interesting Quote");
+				startActivity(Intent.createChooser(shareIntent, "Share the quote via..."));
+			}
 		} else if (id == R.id.action_about) {
 			Toast.makeText(getApplicationContext(), "Settings not yet implemented", Toast.LENGTH_LONG).show();
 			return true;
