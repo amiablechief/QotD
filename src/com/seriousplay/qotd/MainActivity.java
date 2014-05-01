@@ -5,24 +5,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Random;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.support.v4.view.ActionProvider;
+import android.support.v4.view.MenuItemCompat;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.analytics.tracking.android.EasyTracker;
 
 public class MainActivity extends Activity {
 
 	private TextView mTextView;
-	private static String TEXT_VALUE = ""; 
+	private static String TEXT_VALUE = "";
+	private ActionProvider mShareActionProvider;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -184,34 +188,39 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		MenuItem shareItem = menu.findItem(R.id.menu_item_share);
-		ShareActionProvider actionProvider = (ShareActionProvider) shareItem.getActionProvider();
-		actionProvider.setShareIntent(createShareIntent(TEXT_VALUE));
-		
-		return true;
+		mShareActionProvider = MenuItemCompat.getActionProvider(shareItem);
+				
+		return super.onCreateOptionsMenu(menu);
 	}
 	
-	private Intent createShareIntent(String quote) {
-		Intent shareIntent = new Intent();
-		shareIntent.setAction(Intent.ACTION_SEND);
-		shareIntent.putExtra(Intent.EXTRA_TEXT, quote);
-		shareIntent.setType("text/plain");
-		//return Intent.createChooser(shareIntent, getResources().getText(R.string.send_to));
-		return shareIntent;
-	}
+//	private Intent createShareIntent(String quote) {
+//		Intent shareIntent = new Intent();
+//		shareIntent.setAction(Intent.ACTION_SEND);
+//		shareIntent.putExtra(Intent.EXTRA_TEXT, quote);
+//		shareIntent.setType("text/plain");
+//		//return Intent.createChooser(shareIntent, getResources().getText(R.string.send_to));
+//		return shareIntent;
+//	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		//Handle item selection
-		switch(item.getItemId()) {
-			//TODO: Replace toasts with actual calls to fragments/activities
-			case R.id.action_settings:
-				Toast.makeText(getApplicationContext(), "Settings not yet implemented", Toast.LENGTH_LONG).show();
-				return true;
-			case R.id.action_about:
-				Toast.makeText(getApplicationContext(), "Please visit github.com/kulinp/QotD", Toast.LENGTH_LONG).show();
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
+		int id = item.getItemId();
+		
+		if(id == R.id.menu_item_share) {
+			Toast.makeText(this, "Clicked Share!", Toast.LENGTH_SHORT).show();
+			Intent shareIntent = new Intent(Intent.ACTION_SEND);
+			shareIntent.setType("text/plain");
+			shareIntent.putExtra(Intent.EXTRA_TEXT, TEXT_VALUE);
+			shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Thought you might like this interesting Quote");
+			startActivity(shareIntent);			
+		} else if (id == R.id.action_about) {
+			Toast.makeText(getApplicationContext(), "Settings not yet implemented", Toast.LENGTH_LONG).show();
+			return true;
+		} else if (id == R.id.action_settings) {
+			Toast.makeText(getApplicationContext(), "Please visit github.com/kulinp/QotD", Toast.LENGTH_LONG).show();
+			return true;
 		}
+		return super.onOptionsItemSelected(item);
 	}
 }
