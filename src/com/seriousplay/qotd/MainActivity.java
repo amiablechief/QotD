@@ -116,8 +116,8 @@ public class MainActivity extends Activity {
 		return lineCount; // total number of lines in the text file
 	}
 
-	// Return a random line number from where to get the corresponding quote
-	// string
+	// Return a random line number from where to get the 
+	// corresponding quote string
 	private int getRandomLineNumber(int totalLines) {
 		Random rand = new Random();
 		return rand.nextInt(totalLines);
@@ -171,7 +171,6 @@ public class MainActivity extends Activity {
 		final int totalLines = getFileLineCount(textReader);
 		int lineToFetch = 0;
 		String quote = null;
-		//String path = null;
 
 		// We want to get the quote at the following line number
 		lineToFetch = getRandomLineNumber(totalLines);
@@ -179,8 +178,6 @@ public class MainActivity extends Activity {
 		quote = getRandomQuote(lineToFetch);
 
 		displayQuote(quote);
-	
-		//startActivity(createShareIntent(quote));
 	}
 
 	@Override
@@ -202,7 +199,6 @@ public class MainActivity extends Activity {
 			if(TEXT_VALUE == "") {
 				Toast.makeText(this, "Nothing to share! First generate a quote by clicking the button", Toast.LENGTH_SHORT).show();
 			} else {
-				//Toast.makeText(this, "Opening share options", Toast.LENGTH_SHORT).show();
 				Intent shareIntent = new Intent(Intent.ACTION_SEND);
 				shareIntent.setType("text/plain");
 				shareIntent.putExtra(Intent.EXTRA_TEXT, TEXT_VALUE);
@@ -210,10 +206,10 @@ public class MainActivity extends Activity {
 				startActivity(Intent.createChooser(shareIntent, "Share the quote via..."));
 			}
 		} else if (id == R.id.action_about) {
-			Toast.makeText(getApplicationContext(), "Settings not yet implemented", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), "Please visit github.com/kulinp/QotD", Toast.LENGTH_LONG).show();
 			return true;
 		} else if (id == R.id.action_settings) {
-			Toast.makeText(getApplicationContext(), "Please visit github.com/kulinp/QotD", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), "Settings not yet implemented", Toast.LENGTH_LONG).show();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
